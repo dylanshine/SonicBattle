@@ -57,3 +57,12 @@ Game.prototype.scoreUpdate = function() {
     $(player.scoreId).text(player.character + " | " + "score " + player.score + " " + "health " + player.health + " " + "energy " + player.energy);
   });
 }
+
+Game.prototype.winner = function() {
+  this.players.forEach(function(player) {
+    if (player.score === 10) {
+      alert(player.character + " wins!")
+      document.location.reload(true);
+    }
+  });
+}
