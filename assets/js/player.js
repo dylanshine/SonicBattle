@@ -85,3 +85,15 @@ Player.prototype.jump = function() {
     this.jumping = true;
   }
 }
+
+Player.prototype.shield = function() {
+  if (this.energy > 0) {
+    this.blocking = true;
+    this.energy -= 1;
+    return true;
+  } else {
+    this.blocking = false;
+    this.setDirection(this.direction);
+    return false;
+  }
+}
