@@ -21,3 +21,9 @@ Game.prototype.loop = function() {
     }
   });
 }
+
+Game.prototype.inRange = function(attacker, recievers) {
+  return recievers.filter(function(reciever) {
+    return ((attacker.x < reciever.x) && attacker.facing == "right" && Math.abs(attacker.x - reciever.x) < 50) && (attacker.y - reciever.y) < 7 || ((attacker.x > reciever.x) && attacker.facing == "left" && Math.abs(attacker.x - reciever.x) < 50) && (attacker.y - reciever.y) < 7
+  })
+}
