@@ -94,3 +94,13 @@ Game.prototype.recharge = function() {
     }
   });
 }
+
+Game.prototype.roundMap = function(player) {
+  if (player.x < 2) {
+    player.x = 729;
+  }
+
+  if (player.x > 730) {
+    player.x = 3;
+  }
+}
