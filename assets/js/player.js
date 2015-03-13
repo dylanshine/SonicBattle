@@ -97,3 +97,14 @@ Player.prototype.shield = function() {
     return false;
   }
 }
+
+Player.prototype.dead = function() {
+  if (this.health <= 0) {
+    this.tag.score += 1;
+    this.health = 20;
+    this.energy = 15;
+    this.y = 135;
+    this.x = this.spawns[Math.floor(Math.random() * this.spawns.length)];
+    this.jumping = true;
+  }
+}
