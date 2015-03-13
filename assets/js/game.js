@@ -83,3 +83,14 @@ Game.prototype.hit = function(player) {
     }
   });
 }
+
+Game.prototype.recharge = function() {
+  this.players.forEach(function(player) {
+    if (!player.blocking && player.energy < 15) {
+      player.energy += 1;
+    }
+    if (player.health < 20) {
+      player.health += 1;
+    }
+  });
+}
