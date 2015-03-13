@@ -104,3 +104,11 @@ Game.prototype.roundMap = function(player) {
     player.x = 3;
   }
 }
+
+Game.prototype.grabPlatforms = function() {
+  var that = this;
+  $(".platform").each(function(index, element) {
+    element = $(element)
+    that.platforms.push(new Platform(element.height(), element.width(), element.offset().left, element.attr("id")))
+  });
+}
