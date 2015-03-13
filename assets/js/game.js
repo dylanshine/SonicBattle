@@ -27,3 +27,18 @@ Game.prototype.inRange = function(attacker, recievers) {
     return ((attacker.x < reciever.x) && attacker.facing == "right" && Math.abs(attacker.x - reciever.x) < 50) && (attacker.y - reciever.y) < 7 || ((attacker.x > reciever.x) && attacker.facing == "left" && Math.abs(attacker.x - reciever.x) < 50) && (attacker.y - reciever.y) < 7
   })
 }
+
+Game.prototype.jumping = function(player) {
+  if (player.jumping) {
+    view.updateGif(player, "jump");
+    player.yVel += this.gravity
+    player.y += player.yVel;
+    // when player hits ground
+    if (player.y > this.findGroundUnderPlayer(player)) {
+      player.yVel = 0;
+      player.y = this.findGroundUnderPlayer(player);
+      player.jumping = false;
+      player.setDirection(player.facing);
+    }
+  }
+}
