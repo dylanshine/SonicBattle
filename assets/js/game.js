@@ -66,3 +66,20 @@ Game.prototype.winner = function() {
     }
   });
 }
+
+Game.prototype.hit = function(player) {
+  var otherPlayers = this.players.filter(function(p) {
+    return p !== player
+  })
+
+  var nearPlayers = game.inRange(player, otherPlayers)
+
+  nearPlayers.forEach(function(reciever) {
+    if (reciever.blocking === true && reciever.shield() === true) {
+      player.health -= .25;
+    } else {
+      reciever.health -= 1;
+      reciever.tag = player;
+    }
+  });
+}
