@@ -52,3 +52,28 @@ Player.prototype.move = function() {
     }
   }
 }
+
+Player.prototype.setDirection = function(direction) {
+  this.direction = direction;
+  if (this.walking === true) {
+    switch (this.direction) {
+      case 'right':
+        this.facing = "right";
+        this.$sprite.css('background-image', this.sprite.walkRight);
+        break;
+      case 'left':
+        this.facing = "left";
+        this.$sprite.css('background-image', this.sprite.walkLeft);
+        break;
+    }
+  } else {
+    switch (this.direction) {
+      case 'right':
+        this.$sprite.css('background-image', this.sprite.standRight);
+        break;
+      case 'left':
+        this.$sprite.css('background-image', this.sprite.standLeft);
+        break;
+    }
+  }
+}
