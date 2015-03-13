@@ -38,3 +38,17 @@ function Player(character, controls) {
   };
   this.controls = controls;
 }
+
+Player.prototype.move = function() {
+  // TODO: move only upon keydown
+  if (this.walking === true) {
+    switch (this.direction) {
+      case 'right':
+        this.x += this.speed;
+        break;
+      case 'left':
+        this.x -= this.speed;
+        break;
+    }
+  }
+}
