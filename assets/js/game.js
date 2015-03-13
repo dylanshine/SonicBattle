@@ -51,3 +51,9 @@ Game.prototype.initDisplay = function() {
     that.$scoreboard.append('<li class="scores" id="' + player.character + '"></li>');
   });
 }
+
+Game.prototype.scoreUpdate = function() {
+  this.players.forEach(function(player) {
+    $(player.scoreId).text(player.character + " | " + "score " + player.score + " " + "health " + player.health + " " + "energy " + player.energy);
+  });
+}
