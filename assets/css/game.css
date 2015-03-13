@@ -1,0 +1,84 @@
+@font-face {
+font-family: 'SEGA LOGO FONT';
+font-style: normal;
+font-weight: normal;
+src: local('SEGA LOGO FONT'), url('../font/SEGA.woff') format('woff');
+}
+
+.scores {
+  font-family: 'SEGA LOGO FONT';
+  font-size: .6em;
+  text-transform: capitalize;
+}
+
+#battlefield {
+  position: relative;
+  width: 755;
+  height: 406;
+  background-image: url("../img/battlefield/background.png");
+  background-repeat: no-repeat;
+}
+
+#leftPlatform {
+  position: absolute;
+  bottom: 0;
+  height: 149;
+  width: 204;
+}
+
+#rightPlatform {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 149;
+  width: 224;
+}
+
+#centerPlatform {
+  position: absolute;
+  bottom: 0;
+  right: 283;
+  height: 97;
+  width: 206;
+}
+
+#water1 {
+  position: absolute;
+  bottom: 0;
+  right: 489;
+  height: 5;
+  width: 61;
+
+}
+
+#water2 {
+  position: absolute;
+  bottom: 0;
+  right: 224;
+  height: 5;
+  width: 59;
+
+}
+
+ul {
+  list-style: none;
+  padding: 5;
+}
+
+ul li {
+  margin: 5 0 0 0;
+  /*display: inline-block;*/
+}
+/*
+.platform {
+  border: 3px solid black;
+}*/
+
+.player {
+  position: absolute;
+  background: no-repeat center;
+  height: 35;
+  width: 25;
+  padding: 20px;
+  margin: -20px;
+}
