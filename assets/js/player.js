@@ -77,3 +77,11 @@ Player.prototype.setDirection = function(direction) {
     }
   }
 }
+
+Player.prototype.jump = function() {
+  if (this.jumping == false) {
+    this.yVel = -15;
+    this.falling = false;
+    this.jumping = true;
+  }
+}
