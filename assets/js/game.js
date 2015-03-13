@@ -42,3 +42,12 @@ Game.prototype.jumping = function(player) {
     }
   }
 }
+
+Game.prototype.initDisplay = function() {
+  var that = this;
+  this.players.forEach(function(player) {
+    player.$sprite = $("<div class='player'></div>").css('background-image', player.sprite.standRight);
+    that.$battlefield.append(player.$sprite);
+    that.$scoreboard.append('<li class="scores" id="' + player.character + '"></li>');
+  });
+}
