@@ -112,3 +112,25 @@ Game.prototype.grabPlatforms = function() {
     that.platforms.push(new Platform(element.height(), element.width(), element.offset().left, element.attr("id")))
   });
 }
+
+Game.prototype.findGroundUnderPlayer = function(player) {
+  var that = this;
+  var underPlayer = this.platforms.filter(function(platform) {
+    return (platform.left <= player.x && player.x <= platform.right)
+  })[0];
+
+  if ((underPlayer.id == "water1" || underPlayer.id == "water2") && player.jumping == false) {
+    player.falling = true;
+    view.updateGif(player, "fall");
+    player.y += 9;
+  }
+
+  if (player.y >= 406) {
+    player.health = 0;
+  }
+
+  if (player.jumping === false) {} else if (underPlayer.id !== "water1" && underPlayer.id !== "water2") {
+    return this.$battlefield.height() - underPlayer.height - 32;
+  }
+
+}
