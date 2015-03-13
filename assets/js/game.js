@@ -134,3 +134,94 @@ Game.prototype.findGroundUnderPlayer = function(player) {
   }
 
 }
+
+$(document).ready(function() {
+  game = new Game(
+    [
+      new Player("sonic", {
+        "left": "a",
+        "right": "d",
+        "jump": 87,
+        "attack": 81,
+        "block": "s"
+      }),
+      new Player("tails", {
+        "left": "j",
+        "right": "l",
+        "jump": 73,
+        "attack": 85,
+        "block": "k"
+      }),
+      new Player("knuckles", {
+        "left": "j",
+        "right": "l",
+        "jump": 73,
+        "attack": 85,
+        "block": "k"
+      })
+
+    ]);
+  view = new View();
+  game.initDisplay();
+  game.grabPlatforms();
+  setInterval(function() {
+    game.loop();
+  }, 20);
+
+  setInterval(function() {
+    game.recharge();
+  }, 2000);
+
+
+  //Player Controls
+  game.players.forEach(function(player) {
+    ["left", "right"].forEach(function(direction) {
+      Mousetrap.bind(player.controls[direction], function() {
+        player.walking = true;
+        player.setDirection(direction);
+      }, 'keydown');
+      Mousetrap.bind(player.controls[direction], function() {
+        player.walking = false;
+        player.setDirection(direction);
+      }, 'keyup');
+    });
+
+    $(document).keydown(function(event) {
+      if (event.which == player.controls.jump) {
+        event.preventDefault();
+        player.jump();
+      }
+    });
+
+    $(document).keydown(function(event) {
+      if (event.which == player.controls.attack) {
+        event.preventDefault();
+        if (player.attacking) {
+          return;
+        }
+        player.attacking = true;
+        view.updateGif(player, "attack");
+        game.hit(player);
+      }
+    });
+
+    $(document).keyup(function(event) {
+      if (event.which == player.controls.attack) {
+        event.preventDefault();
+        player.attacking = false;
+        player.setDirection(player.direction);
+      }
+    });
+
+    Mousetrap.bind(player.controls.block, function() {
+      player.shield();
+      view.updateGif(player, "block");
+    }, 'keydown');
+
+    Mousetrap.bind(player.controls.block, function() {
+      player.blocking = false;
+      player.setDirection(player.direction);
+    }, 'keyup');
+
+  });
+});
