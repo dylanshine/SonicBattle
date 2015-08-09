@@ -151,15 +151,7 @@ $(document).ready(function() {
         "jump": 73,
         "attack": 85,
         "block": "k"
-      }),
-      new Player("knuckles", {
-        "left": "j",
-        "right": "l",
-        "jump": 73,
-        "attack": 85,
-        "block": "k"
       })
-
     ]);
   view = new View();
   game.initDisplay();
